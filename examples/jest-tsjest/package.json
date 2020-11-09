@@ -7,7 +7,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "@nighttrax/foo": "*"
+    "@nighttrax/foo": "*",
+    "geoip-lite": "^1.4.2"
   },
   "devDependencies": {
     "@types/jest": "~26.0.4",
