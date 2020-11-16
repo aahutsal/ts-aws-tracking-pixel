@@ -14,7 +14,14 @@ describe("meaning of life", () => {
             .get('/xxx')
             .send()
             .expect(302)
-            .expect('Location', 'https://bit.ly/xxx'o)
-  
+            .expect('Location', 'https://bit.ly/xxx')
+            .then(() => {
+                return request
+                    .get('/yyy')
+                    .send()
+                    .expect(302)
+                    .expect('Location', 'https://bit.ly/yyy')
+            })
+
   });
 });

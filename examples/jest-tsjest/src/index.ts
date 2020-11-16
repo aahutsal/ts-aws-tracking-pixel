@@ -44,14 +44,13 @@ const server = createServer((request: IncomingMessage, response: ServerResponse)
     console.info(JSON.stringify(request, endless))
   const obj:any = request.headers
   obj.geo = lookup(obj.remoteAddress = request.socket.remoteAddress)
-  const json:string = JSON.stringify(obj)
-    logger.debug(json)
+    const json:string = JSON.stringify(obj, endless)
+    logger.info(json)
     response.writeHead(302, {
         'Location': 'https://bit.ly/' + request.url
 
     });
     response.end()
-    //response.end(JSON.stringify(request, endless))
 })
 
 server.listen(port, () => {
