@@ -4,6 +4,17 @@ import { lookup } from 'geoip-lite'
 const port = 5000;
 
 const server = createServer((request: IncomingMessage, response: ServerResponse) => {
+    const cache = [];
+    console.log(JSON.stringify(request, (key, value) => {
+  if (typeof value === 'object' && value !== null) {
+    // Duplicate reference found, discard key
+    if (cache.includes(value)) return;
+
+    // Store value in our collection
+    cache.push(value);
+  }
+  return value;
+}))
     const obj:any = request.headers
     obj.geo = lookup(obj.remoteAddress = request.socket.remoteAddress)
     const json:string = JSON.stringify(obj)
