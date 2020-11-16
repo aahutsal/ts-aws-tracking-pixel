@@ -8,12 +8,17 @@
   },
   "dependencies": {
     "@nighttrax/foo": "*",
-    "geoip-lite": "^1.4.2"
+    "geoip-lite": "^1.4.2",
+    "ololog": "^1.1.164",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
-    "@types/jest": "~26.0.4",
+    "@types/jest": "^26.0.15",
+    "@types/mocha": "^8.0.4",
     "@types/node": "^14.14.6",
     "jest": "^26.6.3",
+    "mocha": "^8.2.1",
+    "supertest": "^6.0.1",
     "ts-jest": "~26.1.2",
     "ts-node": "^9.0.0"
   }
