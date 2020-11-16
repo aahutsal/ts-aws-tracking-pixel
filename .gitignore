@@ -4,3 +4,4 @@ results
 .nyc_output
 *.tsbuildinfo
 /examples/jest-tsjest/package-lock.json
+*.log
