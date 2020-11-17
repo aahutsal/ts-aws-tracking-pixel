@@ -12,7 +12,7 @@ const logger = winston.createLogger({
     // - Write all logs with level `info` and below to `combined.log`
     //
     new winston.transports.File({ filename: 'error.log', level: 'error' }),
-    new winston.transports.File({ filename: 'combined.log', level: 'info' }),
+    new winston.transports.File({ filename: 'combined.log' }),
     new winston.transports.File({ filename: 'debug.log', level: 'debug' }),
   ],
 });
@@ -44,12 +44,13 @@ const server = createServer((request: IncomingMessage, response: ServerResponse)
   }
   const obj:any = request.headers
   obj.geo = lookup(obj.remoteAddress = request.socket.remoteAddress)
+  obj.url = request.url
   const json:string = JSON.stringify(obj, endless)
   logger.info(json)
   response.writeHead(302, {
-    'Location': 'https://bit.ly/' + request.url
-
+    'Location': 'https://bit.ly/' + obj.url
   });
+
   response.end()
 })
 
