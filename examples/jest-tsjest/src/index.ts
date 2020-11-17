@@ -5,14 +5,15 @@ import * as winston from 'winston'
 const logger = winston.createLogger({
   level: 'info',
   format: winston.format.json(),
-  defaultMeta: { service: 'user-service' },
+  defaultMeta: { service: 'user-tracking' },
   transports: [
     //
     // - Write all logs with level `error` and below to `error.log`
     // - Write all logs with level `info` and below to `combined.log`
     //
     new winston.transports.File({ filename: 'error.log', level: 'error' }),
-    new winston.transports.File({ filename: 'combined.log' }),
+    new winston.transports.File({ filename: 'combined.log', level: 'info' }),
+    new winston.transports.File({ filename: 'debug.log', level: 'debug' }),
   ],
 });
 
@@ -41,7 +42,6 @@ const server = createServer((request: IncomingMessage, response: ServerResponse)
     }
     return value
   }
-  console.info(JSON.stringify(request, endless))
   const obj:any = request.headers
   obj.geo = lookup(obj.remoteAddress = request.socket.remoteAddress)
   const json:string = JSON.stringify(obj, endless)
