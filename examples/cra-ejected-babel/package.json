@@ -4,7 +4,7 @@
   "private": true,
   "version": "1.0.0",
   "dependencies": {
-    "@babel/core": "7.12.9",
+    "@babel/core": "7.12.10",
     "@nighttrax/components": "*",
     "@nighttrax/foo": "*",
     "@svgr/webpack": "4.3.3",
